@@ -18,8 +18,8 @@ args = parser.parse_args()
 
 # Model Loading
 device = "cuda" if torch.cuda.is_available() else "cpu"
-tokenizer = AutoTokenizer.from_pretrained(args.model_path)
-model = AutoModelForCausalLM.from_pretrained(args.model_path).to(device)
+tokenizer = AutoTokenizer.from_pretrained(args.model_path, local_files_only=True)
+model = AutoModelForCausalLM.from_pretrained(args.model_path, local_files_only=True).to(device)
 
 # Verify request format
 class QueryRequest(BaseModel):
